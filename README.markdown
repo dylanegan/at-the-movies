@@ -6,8 +6,8 @@ Scraper for http://abc.net.au/atthemovies
 
 == Usage (I guess):
 
-  review = Atthemovies::Parser.parse('http://www.abc.net.au/atthemovies/txt/s1533013.htm')
-  review.title # "Brokeback Mountain"
+    review = Atthemovies::Parser.parse('http://www.abc.net.au/atthemovies/txt/s1533013.htm')
+    review.title # "Brokeback Mountain"
 
 == License:
 
