@@ -1,0 +1,416 @@
+HTTP/1.1 200 OK
+Server: Apache
+Content-Type: text/html
+Cache-Control: max-age=300
+Expires: Sun, 02 Aug 2009 05:21:06 GMT
+Date: Sun, 02 Aug 2009 05:16:06 GMT
+Content-Length: 20618
+Connection: keep-alive
+Set-Cookie: ABCGuestID=198.142.23.98.281361249190166220; expires=Sun, 02-Aug-2009 05:46:06 GMT; path=/; domain=abc.net.au
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>At the Movies: Brisbane International Film Festival Highlights</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<meta name="Title" content="At the Movies: Brisbane International Film Festival Highlights">
+
+<meta name="Description" content="The Brisbane International Film Festival runs from 30 July to 9 August and highlights new cinema from around">
+
+<meta name="Keywords" content=", , , , , , , ">
+
+<meta name="Date" content="29/07/2009">
+
+<meta name="Language" content="English">
+
+<meta name="Publisher" content="Australian Broadcasting Corporation">
+
+<meta name="Publisher" content="(SCHEME=URL)">
+
+<meta name="Rights" content="Copyright 2009&nbsp;, Australian Broadcasting Corporation. Other rights may be held as detailed in text. www.abc.net.au/common/copyrigh.htm">
+
+<meta name="ABC-DateReversed" content="">
+
+<meta name="ABC-Gateway" content="">
+
+<meta name="ABC-Site" content="TV, Movie/Film">
+
+<meta name="ABC-Author" content="review">
+
+<meta name="ABC-ResourceType" content="0">
+
+<meta http-equiv="imagetoolbar" content="no">
+<link rel="stylesheet" href="/atthemovies/css/atm.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" media="print" href="/atthemovies/css/print.css">
+<script type="text/javascript" src="/tv/cinerama/scripts/swfobject.js"></script>
+<script type="text/javascript" src="/tv/cinerama/scripts/cinerama.js"></script>
+<script language="JavaScript" type="text/javascript">
+//add onload function audShow;
+function addEvent(obj, evType, fn){ 
+ if (obj.addEventListener){ 
+   obj.addEventListener(evType, fn, false); 
+   return true; 
+ } else if (obj.attachEvent){ 
+   var r = obj.attachEvent("on"+evType, fn); 
+   return r; 
+ } else { 
+   return false; 
+ } 
+}
+
+function audShow() {
+	// display word count only if js enabled
+	document.getElementById("wordCount").style.display='inline';
+}
+function changeAction() {
+	// avoids non-js form submission
+	if (document.revForm) {
+		document.revForm.action = 'http://www2b.abc.net.au/guestbookcentral/addentry.asp';
+		}
+}
+addEvent(window, 'load', audShow);
+addEvent(window, 'load', changeAction);
+function formCheck(zeForm) {
+	// validate fields
+	if (zeForm.name.value == "") {
+	alert("Please enter your name or nickname.");
+	document.getElementById("yname").style.background='#FFFDC8';
+	return false;
+	}
+	if (zeForm.email.value == "") {
+	alert("Please enter your email address.");
+	document.getElementById("yemail").style.background='#FFFDC8';
+	return false;
+	}
+	// have they left a rating
+	if (zeForm.score.options[0].selected && zeForm.score.options[0].value=="na") {
+		alert("You forgot to rate the movie!");
+		document.getElementById("score").style.background='#FFFDC8';	
+		return false;
+	}	
+	
+	// check for http
+	spamcheck=zeForm.remark.value;
+	if (spamcheck.indexOf("http")!=-1) {
+		document.revForm.action = 'http://www.abc.net.au/atthemovies/audience/blank.htm';
+	}
+	
+	// check word count
+	wct = cnt(zeForm.remark.value);
+	if (wct > 100) {
+	alert("Comments are limited to 100 words. You've written "+wct+" words!");
+	document.getElementById("remark").style.background='#FFFDC8';
+	return false;
+	}
+	
+	// replace usual suspect bad characters (they break XML)
+	badChars = Array  ('…', '—', '–', '“', '”', 'ö', 'é', 'è', 'ñ', 'â', ' ', '’','‘','´');
+	goodChars = Array ('...', '-', '-', '"', '"', 'o', 'e', 'e', 'n', 'a', '-', '\'','\'','\'');
+	fld = document.getElementById("remark");
+	for(i=0;i<badChars.length;i++){
+		restring = new RegExp( badChars[i] , 'g');
+		fld.value = fld.value.replace(restring,goodChars[i]);
+	}
+	fldn = document.getElementById("yname");
+	for(j=0;j<badChars.length;j++){
+		restringj = new RegExp( badChars[j] , 'g');
+		fldn.value = fldn.value.replace(restringj,goodChars[j]);
+	}	
+	
+	
+	
+	// display thankyou div layer and hide form. 
+	document.getElementById("favFormThx").style.display='block';
+	document.getElementById("favForm").style.display='none';
+	document.getElementById("wordCount").style.display='none';	
+	
+	// all clear, submit the form
+	return true;
+}
+
+// word count function
+function cnt(theform){
+	var y=theform;
+	var r = 0;
+	a=y.replace('\n',' ');
+	a=a.split(' ');
+	for (z=0; z<a.length; z++) {if (a[z].length > 0) r++;}
+	return r;
+}
+
+function remainingWords(textAreaContent,textAreaContentValue, maxWords) 
+{
+	// Determine the number of words we have left
+	var numberofwords = cnt(textAreaContentValue);
+	wordsLeft = maxWords - numberofwords;
+	if (wordsLeft < 1)
+	{	// if 100 change color to red
+		document.getElementById("wcNum").style.color='red'; 
+	} else {
+		document.getElementById("wcNum").style.color='#330000'; 
+	}
+	// update word count number
+	document.getElementById("wcNum").innerHTML=(0+numberofwords);
+}
+
+// windows media alt box
+function showWindows() {
+	document.getElementById("windowsMed").style.display='block';
+}
+</script>
+
+<style type="text/css">
+/* temp */
+#windowsMed {display:none;float:right;width:150px;background:#0d0d0d}
+
+</style>
+<style type="text/css">
+/* tmp styles */
+#content #storyImage #altWinMedia {
+background:#0d0d0d;
+height:23px;
+margin:3px 3px 0px 3px;
+font-size:11px;
+}
+#content #storyImage #altWinMedia a {color:#D47F2A}
+#content #storyImage #altWinMedia span {display:block;color:#ABABAB;padding:4px 5px 0px 0px;}
+
+.hideorshow-review {display:none}
+.hideorshow-review {
+	display:block;
+}
+
+</style>
+</head><body>
+<div id="globalnav">
+ <!-- ABC nav: Global Nav -->
+<style type="text/css"><!--
+	@import url(http://www.abc.net.au/includes/css/globalNav.css); -->
+</style>
+<div id="gN_Nav">
+	<div id="gN_align">
+		<form action="http://search.abc.net.au/search/search.cgi" method="GET" id="gN_form" target="_top">
+			<input type="hidden" name="form" value="simple">
+			<input type="hidden" name="num_ranks" value="20">
+			<input type="hidden" name="collection" value="abcall">
+			<label for="gN_query"><a href="http://search.abc.net.au/search/search.cgi?collection=abcall&amp;form=simple" target="_top" title="Search the ABC">Search the ABC</a></label>
+				<input type="text" id="gN_query" name="query" value="" size="20" maxlength="30">
+				<input type="submit" id="gN_submit" value="Search the ABC" title="Search the ABC">
+		</form>
+		<p id="gN_text"><a id="gN_home" href="http://www.abc.net.au/" target="_top">ABC&nbsp;Home</a><span> | </span><a id="gN_radio" class="pipe" href="http://www.abc.net.au/radio/" target="_top">Radio</a><span> | </span><a id="gN_tv" class="pipe" href="http://www.abc.net.au/tv/" target="_top">Television</a><span> | </span><a id="gN_news" class="pipe" href="http://www.abc.net.au/news/" target="_top">News</a><span> | </span><a id="gN_local" class="pipe" href="http://www.abc.net.au/local/" target="_top">Your&nbsp;Local&nbsp;ABC</a><span> | </span><a id="gN_more" class="pipe" href="http://www.abc.net.au/subjects.htm" target="_top">More&nbsp;Subjects&#8230;</a><span> | </span><a id="gN_shop" href="http://shop.abc.net.au/" target="_top">Shop</a></p>
+	</div>
+</div>
+<script type="text/javascript" src="http://www.abc.net.au/includes/scripts/global.js"></script>
+<noscript>
+	<img alt="" border="0" name="DCSIMG" width="1" height="1" src="http://statse.webtrendslive.com/dcsg85fae000004n0vfjpj8oa_9m4q/njs.gif?dcsuri=/nojavascript&amp;WT.js=No">
+</noscript> 
+<!-- end ABC nav -->
+
+</div>
+<!-- END GLOBALNAV //-->
+<div id="outerWrap"></div>
+<div id="banner">
+ <a href="http://www.abc.net.au/atthemovies/" target="_top"><img src="/atthemovies/img/1p.gif" alt="At the Movies" class="title"></a> 
+ <div id="masthead">
+ Wed 10pm, Sun 6pm <em>ABC1</em>; &nbsp;&nbsp;&nbsp;Sat 8pm <em>ABC2</em> 
+ </div>
+ <!-- END MASTHEAD //-->
+ <div id="search">
+ <form action="http://search.abc.net.au/search/search.cgi" method="GET" name="simple">
+<input type=hidden name="form" value="simple">
+<input type=hidden name="scope" value="atthemovies">
+<input type=hidden name="num_ranks" value="20">
+<input type=hidden name="collection" value="tv">
+Search <!--Search by <input type="radio" name="meta_a" value="review">review&nbsp;<input type="radio" name="meta_a" value="interview">interview--> <input type="text" name="query" value="" title="Search At the Movies" size="14" id="searchbox"> <input type="submit" value="Go" title="Search At the Movies" id="searchbutton"></form>
+ </div>
+ <!-- END SEARCH //-->
+ <div id="functions"><a title="Email this page to a friend" href="/cgi-bin/common/mailto/mailto-nojs_query.pl?http://www.abc.net.au/atthemovies/txt/s2631026.htm">Send to a friend</a></div>
+ <!-- END FUNCTIONS //-->
+</div>
+<!-- END BANNER //-->
+<table id="contentcontainer" align="center" cellpadding="0" cellspacing="0" border="0" summary="Layout table used to contain content">
+ <caption class="hidden">
+ <a href="/atthemovies/">At the Movies</a>
+ </caption>
+ <tbody>
+<tr>
+<td class="featurecontainer"><div id="sitenav">
+  <ul>
+<li><a href="/atthemovies/">Home</a></li>
+<li class="selected"><a href="/atthemovies/review/">Movie Reviews</a></li>
+<li><a href="/atthemovies/interview/">Interviews</a></li>
+<li><a href="/atthemovies/news/">Movie News</a></li>
+<li><a href="/tv/geo/atthemovies/">Download Video</a></li>
+<!-- <li><a href="/atthemovies/movieupdates/">Mailing list</a></li> -->
+<li><a href="/atthemovies/events/">Movie Events</a></li>
+<li><a href="/atthemovies/extras/">Extras</a></li>
+<li><a href="/atthemovies/about/">About the Show</a></li>
+<li><a href="http://www2b.abc.net.au/tmb/Client/Board.aspx?b=19">Message Board</a></li>
+<!--<li><a href="/atthemovies/contact/">Contact Us</a></li>-->
+
+</ul>
+ </div>
+ <!-- END SITENAV //-->
+ <div id="mbextract">
+  <h3 id="yoursay"><a href="http://www2b.abc.net.au/tmb/Client/Board.aspx?b=19"><span class="hidden">Your Comments</span></a></h3>
+  <div style="padding:0px 3px 0px 9px">
+  <p style="margin-bottom:10px"><span style="font-weight:bold;color:#94E6E6"><a href="http://www2b.abc.net.au/tmb/Client/Message.aspx?b=19&m=19420&ps=20&dm=2">Re: Burton's Alice In Wonderland</a></span><br>sailor says:<br>"Looks like the girl is too old to play Alice.  Alice is the archetypal English girl - sweet, ..." <a href="http://www2b.abc.net.au/tmb/Client/Message.aspx?b=19&m=19420&ps=20&dm=2"><em>More&#187;</em></a>
+</p><p style="margin-bottom:10px"><span style="font-weight:bold;color:#94E6E6"><a href="http://www2b.abc.net.au/tmb/Client/Message.aspx?b=19&m=19419&ps=20&dm=2">PUBLIC ENEMIES</a></span><br>sidonie says:<br>"Margaret and David are echoing similar comments to US reviews. That it is a bit of a mess, ..." <a href="http://www2b.abc.net.au/tmb/Client/Message.aspx?b=19&m=19419&ps=20&dm=2"><em>More&#187;</em></a>
+</p>
+  </div>
+ </div>
+ <!-- END TMBEXTRACT //-->
+ </td>
+<td><!-- PRINT_CONTENT_START -->
+ <div id="content">
+  <div id="storyImage">
+			<!-- video block -->
+<noscript><h1>Brisbane International Film Festival Highlights</h1></noscript>
+<div style="margin-left:3px"><a class="singleClip" title="Javascript and flash 9 required to view this link." href="rtmp://cp44823.edgefcs.net/ondemand/flash/tv/streams/atthemovies/20090729_biff.flv" style="background:#000000;color:#b96125"><img src="/atthemovies/img/2009/ep25/biff_large.jpg" width="400" height="224" style="border:0px" alt="Brisbane International Film Festival Highlights"></div></a>
+
+<noscript>
+<br><span style="color:#ffffff">Flash Player 9 and JavaScript is required to view video in the page. Alternatively use the Windows Media links below.</span></noscript>
+
+<div id="altWinMedia"><span><a href="/atthemovies/broadband/20090729_2230/meta/hq6.asx" onclick="showWindows();return false">Windows Media &#187;</a><div id="windowsMed"><a href="/atthemovies/broadband/20090729_2230/meta/hq6.asx" title="Alternative Windows Media Video: Fast connections" target="_blank">Fast</a> : <a href="/atthemovies/broadband/20090729_2230/meta/lq6.asx" title="Alternative Windows Media Video: Slow connections" target="_blank">Slow</a></div></span>
+</div>
+
+<!-- // video block -->
+  
+  <p class="description">The Brisbane International Film Festival runs from 30 July to 9 August and highlights new cinema from around the globe.</p>
+  
+  <p class="score" style="border:0;"> </p>
+  </div>
+  <h3>Brisbane International Film Festival Highlights</h3>
+		 
+  
+  <p>Brisbane International Film Festival opens on 30 July with the charming coming of age film AN EDUCATION directed by Lone Scherfig and based on a script by Nick Hornby. Starring new talent Carey Mulligan, Peter Sarsgaard and Alfred Molina it is set against the backdrop of swinging sixties London.<BR><BR>The "Colourise BIFF" strand has been programmed in conjuction with the "Colourise Festival" and presents films made by or about indigenous people from around the world including Marco Bechis’s BIRDWATCHERS about the tensions that arise when the indigenous Guarani-Kaiowa community attempts to reinhabit their land in Takuara, Brazil. <BR><BR>Other international highlights include Claire Denis’ 35 SHOTS OF RUM, Costa Gavros’ EDEN IS WEST, Ken Loach’s LOOKING FOR ERIC, and Jerzy Skolimowski’s <a href="http://www.abc.net.au/atthemovies/txt/s2258081.htm"><strong>FOUR NIGHTS WITH ANNA</strong></a>, and Venice 2008 favourites Ramin Bahrani's <a href="http://www.abc.net.au/atthemovies/txt/s2361592.htm"><strong>GOODBYE SOLO</strong></a> and Agnes Varda's <a href="http://www.abc.net.au/atthemovies/txt/s2361594.htm"><strong>THE BEACHES OF AGNES</strong></a>. There is also a chance to see parts 1 & 2 of Steven Soderbergh's epic CHE starring Benecio Del Toro as the young revolutionary. <BR><BR>While new Australian cinema goes from strength to strength with inclusions of Ana Kokkinos’s gritty portrayal of the complicated relationships between children and their mothers in BLESSED, Jonathan Auf der Heide's Tasmanian convict drama VAN DIEMEN'S LAND and David Caesar’s truckin’ great PRIME MOVER - an love story with action and drama and a lot of big roadtrains! <BR><BR>This year's sidebar is a programme called "ASTERISKS: A REAPPRECIATION OF THE PHYSICAL PROPERTIES OF FILM" which features films that venture into the abstract and artistic realms and includes the second feature from Ivan Sen DREAMLANDS, Austrian film FILM IST. A GIRL & A GUN, Iranian director Abbas Kiarostami's SHIRIN and revisits KOYAANISQATSI, and several short films.<BR><BR>There’s also a mini retrospective to the early work of legendary French actress Jeanne Moreau.<BR><BR>For further details on the festival, visit their website: <a href="http://www.stgeorgebiff.com.au" class="external"><strong>www.stgeorgebiff.com.au</strong></a></p>
+  
+		 <div class="hideorshow-review">
+  <div id="audiencecomment">
+  <h3>Your rating: Brisbane International Film Festival Highlights</h3>
+  <form action="http://www.abc.net.au/atthemovies/audience/blank.htm" name="revForm" id="reviewForm" method="post" target="revThanks" onSubmit="return formCheck(this)">
+  <input type="hidden" name="GuestbookID" value="394" >
+  <input type="hidden" name="subject" id="sbj" value="BRISBANEINTERNATIONALFILMFESTIVALHIGHLIGHTS" >
+  <div id="favFormThx"> <strong>Thank you.</strong><br>
+  <br>
+  Your comment and rating will appear below once approved. <br>
+  <br>
+  To review or discuss this movie in more detail,<br>
+  please use the <a href="http://www2b.abc.net.au/tmb/Client/Board.aspx?b=19" style="color:#CC6600"><strong>message board</strong></a>. </div>
+  <table border="0" cellspacing="0" cellpadding="0" id="favForm">
+ <tr>
+  <td class="gbkSubhead">Name:<br>
+   <span class="smlTxt">(or nickname)</span></td>
+  <td><input type="text" name="name" id="yname" size="45" class="favField" onFocus="this.style.background='#FFF6E9'"></td>
+  </tr>
+ <tr>
+  <td class="gbkSubhead">Email:</td>
+  <td><input type="text" name="email" id="yemail" size="45" class="favField" onFocus="this.style.background='#FFF6E9'"></td>
+  </tr>
+ <tr>
+  <td class="gbkSubhead">Rating:</td>
+  <td><select name="score" id="score" style="margin:0" onFocus="this.style.background='#FFF6E9'">
+   <option value="na">Select...</option>
+   <option value="0">Zero stars</option>
+   <option value="1">Half a star</option>
+   <option value="2">One star</option>
+   <option value="3">One and a half stars</option>
+   <option value="4">Two stars</option>
+   <option value="5">Two and a half stars</option>
+   <option value="6">Three stars</option>
+   <option value="7">Three and a half stars</option>
+   <option value="8">Four stars</option>
+   <option value="9">Four and a half stars</option>
+   <option value="10">Five stars</option>
+   </select>
+   </td>
+  </tr>
+ <tr>
+  <td class="gbkSubhead" valign="top">Comment:<br>
+   <span class="smlTxt">(max 100 words)</span> </td>
+  <td><textarea name="remark" id="remark" class="favField" onKeyUp="remainingWords(this, this.value, 100)" onFocus="this.style.background='#FFF6E9'"></textarea>
+   <p style="margin:0"><a href="/atthemovies/txt/s1224754.htm" style="color:#A0410F" >Conditions of use &#187;</a></p></td>
+  </tr>
+ <tr>
+  <td colspan="2" align="right" height="37"><input type="Submit" name="Action" value="Submit" class="gbkbutton" onMouseOver="this.style.background='#FFEDD2'" onMouseOut="this.style.background='#FFD495'">
+   </td>
+  </tr>
+  </table>
+  </form>
+  <!-- comments form submits to this iframe, hidden from js enabled user -->
+  <IFRAME width="375" height="20" src="/atthemovies/audience/blank.htm" TITLE="blank" name="revThanks" frameborder="0" scrolling="no"></IFRAME>
+  <div id="wordCount"> Word count<br>
+  <div id="wcNum">0</div>
+  </div>
+  </div>
+  <!-- // audiencecomment -->
+  <div id="allComments"> 
+  [an error occurred while processing this directive]
+  </div>
+		 </div>
+		 <!-- // hideorshow-review -->
+ </div>
+ <!-- PRINT_CONTENT_END --></td>
+<td class="sidebarcontainer"><div id="related">
+	 <div class="hideorshow-review">
+  <h3>Production details</h3>
+  <p class="moviedetails"> 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <br clear="all">
+  &nbsp;</p>
+			</div>
+  <h3 class="reviews">Movies and interviews from 29&nbsp;July 2009</h3>
+<table border="0" cellspacing="0" cellpadding="0" class="sideRating">
+
+<tr><td colspan=2 class="mn"><a href="http://www.abc.net.au/atthemovies/txt/s2625733.htm">Public Enemies</a></td></tr>
+<tr><td>Margaret</td><td><img src="/atthemovies/img/rthree.gif" alt="three stars"></td></tr> <tr><td>David</td><td><img src="/atthemovies/img/rthree-and-a-half.gif" alt="three-and-a-half stars"></td></tr>
+
+<tr><td colspan=2 class="mn"><a href="http://www.abc.net.au/atthemovies/txt/s2625742.htm">Coraline</a></td></tr>
+<tr><td>Margaret</td><td><img src="/atthemovies/img/rfour.gif" alt="four stars"></td></tr> <tr><td>David</td><td><img src="/atthemovies/img/rfour.gif" alt="four stars"></td></tr>
+
+<tr><td colspan=2 class="mn"><a href="http://www.abc.net.au/atthemovies/txt/s2625654.htm">My Sister's Keeper</a></td></tr>
+<tr><td>Margaret</td><td><img src="/atthemovies/img/rthree-and-a-half.gif" alt="three-and-a-half stars"></td></tr> <tr><td>David</td><td><img src="/atthemovies/img/rthree.gif" alt="three stars"></td></tr>
+
+<tr><td colspan=2 class="mn"><a href="http://www.abc.net.au/atthemovies/txt/s2625717.htm">Cedar Boys</a></td></tr>
+<tr><td>Margaret</td><td><img src="/atthemovies/img/rthree-and-a-half.gif" alt="three-and-a-half stars"></td></tr> <tr><td>David</td><td><img src="/atthemovies/img/rfour.gif" alt="four stars"></td></tr>
+
+<tr><td colspan=2 class="mn"><a href="http://www.abc.net.au/atthemovies/txt/s2634329.htm">Cedar Boys Interview</a></td></tr>
+ 
+
+<tr><td colspan=2 class="mn"><a href="http://www.abc.net.au/atthemovies/txt/s2631026.htm">Brisbane International Film Festival Highlights</a></td></tr>
+ 
+
+</table>
+
+ </div>
+ <!-- END RELATED //-->
+ </td>
+ </tr>
+ </tbody>
+</table>
+<!-- END CONTENT CONTAINER -->
+<div id="footer">
+ <p><a href="http://www.abc.net.au/"><img src="/atthemovies/img/logo_abc_footer.gif" alt="ABC Online"></a> <a href="http://www.abc.net.au/common/copyrigh.htm" target="_top" title="Copyright">&#169; 2009 ABC</a> | <a href="http://www.abc.net.au/privacy.htm" target="_top" title="Privacy Policy">Privacy Policy</a>
+ | <a href="/atthemovies/disclaimer.htm">Movie listings disclaimer</a> | <a href="/conditions.htm">Conditions of Use</a></p>
+<!-- n -->
+
+
+</div>
+<!-- END FOOTER //-->
+</body>
+</html>

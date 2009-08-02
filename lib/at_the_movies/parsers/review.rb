@@ -2,6 +2,7 @@ module AtTheMovies
   module Parsers
     class Review < Parser
       def parse
+        return unless @page.body[/Review by/]
         AtTheMovies::Review.new(title, classification, duration, genre, ratings)
       end
 
