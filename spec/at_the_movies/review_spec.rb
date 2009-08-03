@@ -35,8 +35,6 @@ describe AtTheMovies::Review do
         %w( s2625733 s2625742 s2625654 s2625717 s2634329 s2631026 ).each do |uri|
           FakeWeb.register_uri(:get, "http://www.abc.net.au/atthemovies/txt/#{uri}.htm", :response => cached_page("#{uri}.htm"))
         end
-        mech = WWW::Mechanize.new
-        page = mech.get(url)
         @reviews = AtTheMovies::Review.latest
       end
 
