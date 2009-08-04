@@ -64,7 +64,7 @@ task :release => :repackage do
 
   puts "Changing the version to #{next_version}."
 
-  version_file = File.dirname(__FILE__)+"/lib/#{GEM}/version.rb"
+  version_file = File.dirname(__FILE__)+"/lib/at_the_movies/version.rb"
   File.open(version_file, "w") do |f|
     f.puts <<-EOT
 module AtTheMovies 
