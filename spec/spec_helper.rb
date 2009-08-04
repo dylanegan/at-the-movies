@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'spec'
 require 'fake_web'
-require 'mechanize'
  
 require File.join(File.dirname(__FILE__), '..', 'lib', 'at_the_movies')
  
