@@ -3,7 +3,7 @@ module AtTheMovies
     class Review < Parser
       def parse
         return unless @page.body[/Review by/]
-        AtTheMovies::Review.new(title, classification, duration, genre, ratings)
+        AtTheMovies::Review.new(title, classification, date, duration, genre, ratings)
       end
 
       def details
@@ -16,6 +16,10 @@ module AtTheMovies
 
       def classification
         details.scan(/Classification:<\/strong> ([[:alnum:][:punct:][:space:]]{1,10})<br>/).flatten.first
+      end
+
+      def date
+        Date.parse(@page.search('meta[@name="Date"]').first['content'].gsub('/', '-'))
       end
 
       def duration

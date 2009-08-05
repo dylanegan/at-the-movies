@@ -25,6 +25,10 @@ describe AtTheMovies::Review do
     it "should have a genre" do
       @review.genre.should == "Drama"
     end
+
+    it "should have a review date" do
+      @review.date.to_s.should == "2005-12-18"
+    end
   end
 
   context "finding" do
