@@ -18,6 +18,10 @@ describe AtTheMovies::Review do
       @review.classification.should == "M"
     end
 
+    it "should have a date" do
+      @review.date.to_s.should == "2005-12-18"
+    end
+
     it "should have a duration" do
       @review.duration.should == 134
     end
@@ -26,8 +30,20 @@ describe AtTheMovies::Review do
       @review.genre.should == "Drama"
     end
 
-    it "should have a review date" do
-      @review.date.to_s.should == "2005-12-18"
+    it "should have a total rating" do
+      @review.rating.should == 10
+    end
+
+    it "should have a rating by Margaret" do
+      @review.rating(:margaret).should == 5
+    end
+
+    it "should have a rating by David" do
+      @review.rating(:david).should == 5
+    end
+
+    it "should have a url" do
+      @review.url.should == "http://www.abc.net.au/atthemovies/txt/s1533013.htm"
     end
   end
 
