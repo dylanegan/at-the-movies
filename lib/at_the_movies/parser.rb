@@ -1,4 +1,5 @@
 module AtTheMovies
+  class ParserError < StandardError; end
   class Parser
     attr_reader :page
 
