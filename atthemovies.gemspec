@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{atthemovies}
-  s.version = "0.0.6"
+  s.version = "0.0.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dylan Egan"]
-  s.date = %q{2009-08-19}
+  s.date = %q{2009-08-20}
   s.description = %q{Scraper for http://abc.net.au/atthemovies}
   s.email = %q{dylanegan@gmail.com}
   s.extra_rdoc_files = [
@@ -17,14 +17,18 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/at_the_movies.rb",
+     "lib/at_the_movies/interview.rb",
      "lib/at_the_movies/parser.rb",
      "lib/at_the_movies/parsers.rb",
+     "lib/at_the_movies/parsers/interview.rb",
      "lib/at_the_movies/parsers/review.rb",
      "lib/at_the_movies/review.rb",
      "lib/at_the_movies/version.rb",
      "lib/core_ext.rb",
      "lib/core_ext/enumerable.rb",
+     "spec/at_the_movies/interview_spec.rb",
      "spec/at_the_movies/parser_spec.rb",
+     "spec/at_the_movies/parsers/interview_spec.rb",
      "spec/at_the_movies/parsers/review_spec.rb",
      "spec/at_the_movies/parsers_spec.rb",
      "spec/at_the_movies/review_spec.rb",
@@ -37,6 +41,7 @@ Gem::Specification.new do |s|
      "spec/pages/s2625742.htm",
      "spec/pages/s2631026.htm",
      "spec/pages/s2634329.htm",
+     "spec/pages/s2642594.htm",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
@@ -46,7 +51,9 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.4}
   s.summary = %q{Pulling that shit in yo!}
   s.test_files = [
-    "spec/at_the_movies/parser_spec.rb",
+    "spec/at_the_movies/interview_spec.rb",
+     "spec/at_the_movies/parser_spec.rb",
+     "spec/at_the_movies/parsers/interview_spec.rb",
      "spec/at_the_movies/parsers/review_spec.rb",
      "spec/at_the_movies/parsers_spec.rb",
      "spec/at_the_movies/review_spec.rb",
