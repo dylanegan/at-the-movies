@@ -1,4 +1,4 @@
-%w( review ).each { |parser| require File.dirname(__FILE__) + "/parsers/#{parser}" }
+%w( interview review ).each { |parser| require File.dirname(__FILE__) + "/parsers/#{parser}" }
 
 module AtTheMovies
   module Parsers
