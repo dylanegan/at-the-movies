@@ -2,12 +2,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{at-the-movies}
-  s.version = "0.0.7"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dylan Egan"]
-  s.date = %q{2009-08-20}
-  s.description = %q{Scraper for http://abc.net.au/at-the-movies}
+  s.date = %q{2009-08-24}
+  s.description = %q{Scraper for http://abc.net.au/atthemovies}
   s.email = %q{dylanegan@gmail.com}
   s.extra_rdoc_files = [
     "README.markdown"
