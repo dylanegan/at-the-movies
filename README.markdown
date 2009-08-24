@@ -1,10 +1,10 @@
-= atthemovies
+# at-the-movies
 
-== Description:
+## Description:
 
 Scraper for http://abc.net.au/atthemovies
 
-== Usage (I guess):
+## Usage (I guess):
 
     review = AtTheMovies::Parsers.for('http://www.abc.net.au/atthemovies/txt/s1533013.htm')
     review.title # "Brokeback Mountain"
@@ -12,7 +12,7 @@ Scraper for http://abc.net.au/atthemovies
     latest = AtTheMovies::Review.latest
     latest.first.title # "Public Enemies"
 
-== License:
+## License:
 
 (The MIT License)
 
