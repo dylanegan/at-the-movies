@@ -1,7 +1,6 @@
-require 'rubygems'
-require 'spec'
-require 'fake_web'
- 
+require File.dirname(__FILE__) + '/../vendor/gems/environment'
+Bundler.require_env(:test)
+
 require File.join(File.dirname(__FILE__), '..', 'lib', 'at_the_movies')
  
 SPEC_DIR = File.dirname(__FILE__) unless defined? SPEC_DIR
