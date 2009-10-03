@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../vendor/gems/environment'
+require File.dirname(__FILE__) + '/../tmp/vendor/environment'
 Bundler.require_env(:test)
 
 require File.join(File.dirname(__FILE__), '..', 'lib', 'at_the_movies')
